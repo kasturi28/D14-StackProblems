@@ -3,6 +3,7 @@ package practiseproblem;
 public class main {
 
 	Node head;
+	Node tail;
 
 	class Node {
 
@@ -22,28 +23,16 @@ public class main {
 	 * @param args
 	 */
 
-	public void addFirst(int data) {
+	public void addData(int data) {
 
 		Node newNode = new Node(data);
 		if (head == null) {
 			head = newNode;
-			return;
+			tail = newNode;
+		} else {
+			tail.next = newNode;
+			tail = newNode;
 		}
-		newNode.next = head;
-		head = newNode;
-	}
-
-	public void addLast(int data) {
-		Node newNode = new Node(data);
-		if (head == null) {
-			head = newNode;
-			return;
-		}
-		Node currNode = head;
-		while (currNode.next != null) {
-			currNode = currNode.next;
-		}
-		currNode.next = newNode;
 	}
 
 	public void printList() {
@@ -59,17 +48,26 @@ public class main {
 			System.out.print(currNode.data + "---");
 			currNode = currNode.next;
 		}
-		System.out.println("null");
-
 	}
 
-	public static void main (String[] args) {
+	public void pushData(int data) {
+		Node newNode = new Node(data);
+		if (head == null) {
+			head = newNode;
+			tail = newNode;
+		} else {
+			newNode.next = head;
+			head = newNode;
+		}
+	}
+
+	public static void main(String[] args) {
 
 		main list = new main();
 
-		list.addFirst(70);
-		list.addFirst(30);
-		list.addFirst(56);
+		list.pushData(70);
+		list.pushData(30);
+		list.pushData(56);
 		list.printList();
 
 	}
