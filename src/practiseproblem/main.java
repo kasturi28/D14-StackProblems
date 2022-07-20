@@ -35,17 +35,28 @@ public class main {
 		}
 	}
 
-	public void appendData(int data) {
-
+	public void appendNode(int data) {
 		Node newNode = new Node(data);
 		if (head == null) {
 			head = newNode;
 			tail = newNode;
 		} else {
-			newNode.next = head;
-			head = newNode;
+			this.tail.next = newNode;
+			tail = newNode;
 		}
 	}
+
+	// public void appendData(int data) {
+
+	// Node newNode = new Node(data);
+	// if (head == null) {
+	// head = newNode;
+	// tail = newNode;
+	// } else {
+	// newNode.next = head;
+	// head = newNode;
+	// }
+	// }
 
 	public void printList() {
 
@@ -77,9 +88,9 @@ public class main {
 
 		main list = new main();
 
-		list.addData(70);
-		list.appendData(30);
-		list.appendData(56);
+		list.addData(56);
+		list.appendNode(30);
+		list.appendNode(70);
 		list.printList();
 
 	}
